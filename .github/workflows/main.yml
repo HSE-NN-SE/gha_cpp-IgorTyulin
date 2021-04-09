@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wok
-          path: wok.out
+          path: a.out
           retention-days: 5
       - name: send default message
         uses: appleboy/telegram-action@master
@@ -39,6 +39,6 @@ jobs:
             to: ${{ secrets.TELEGRAM_TO_DEBUG }}
             token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
             message: Y Tyubik
-            document: wok.out
+            document: a.out
       
   
