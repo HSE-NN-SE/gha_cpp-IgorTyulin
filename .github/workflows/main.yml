@@ -33,5 +33,12 @@ jobs:
           name: wok
           path: wok.exe
           retention-days: 5
+      - name: send default message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO_DEBUG }}
+          token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
+          message: It's me, Mario
+          document: wok.exe
       
   
