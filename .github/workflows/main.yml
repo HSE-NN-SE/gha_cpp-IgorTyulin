@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wok
-          path: wok.cpp
+          path: wok.exe
           retention-days: 5
       
   
