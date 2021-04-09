@@ -27,6 +27,11 @@ jobs:
         
       - name: ls
         run: ls
-        
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: wok
+          path: wok.cpp
+          retention-days: 5
       
   
