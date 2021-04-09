@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v1
       
       - name: build
-        run: cl /EHsc ./Desktop/otp/main.cpp
+        run: cl /EHsc wok.cpp
         
       - name: ls
         run: ls
