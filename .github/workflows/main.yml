@@ -17,13 +17,13 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
       - uses: ilammy/msvc-dev-cmd@v1
       
       - name: build
-        run: g++ wok.cpp
+        run: cl /EHsc wok.cpp
         
       - name: ls
         run: ls
@@ -31,14 +31,22 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: wok
-          path: a.out
+          path: wok.exe
           retention-days: 5
-      - name: send default message
-        uses: appleboy/telegram-action@master
-        with:
-            to: ${{ secrets.TELEGRAM_TO_DEBUG }}
-            token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
-            message: Y Tyubik
-            document: a.out
+  sendNotify:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+        - name: download artifact
+          uses: actions/download-artifact@v2
+          with:
+            name: myArt
+        - name: send
+          uses: appleboy/telegram-action@master
+          with:
+           to: ${{ secrets.TELEGRAM_TO_DEBUG }}
+           token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
+           message: Y Tyub
+           document: wok.exe
       
   
