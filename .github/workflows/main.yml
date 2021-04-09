@@ -39,6 +39,6 @@ jobs:
             to: ${{ secrets.TELEGRAM_TO_DEBUG }}
             token: ${{ secrets.TELEGRAM_TOKEN_DEBUG }}
             message: Hello world!
-            document: a.out
+            document: wok.out
       
   
